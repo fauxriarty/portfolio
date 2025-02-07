@@ -1,0 +1,40 @@
+section {
+    flex-grow: 1;
+    flex-direction: row-reverse;
+
+    @media (min-width: 768px) {
+        display: flex;
+        gap: 1rem;
+    }
+
+    div {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: 1rem;
+        overflow: hidden;
+        margin: 0 auto;
+        max-width: calc(768px / 2);
+
+        @media (min-width: 768px) {
+            width: 50%;
+        }
+
+        img.circle {
+            width: 100%;
+            border-radius: 75%;
+            border: 1px solid white;
+        }
+    }
+}
+
+.content{
+    margin:55;
+}
+
+@media (min-width: 768px) {
+    .home {
+      grid-template-columns: auto 2fr;
+      gap: 2rem; // Increases spacing on larger screens
+    }
+  }

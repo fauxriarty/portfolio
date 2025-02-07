@@ -1,4 +1,4 @@
-import "../app/globals.css";
+import "../main.scss";
 import { Layout } from "../layout";
 
 export const App = ({ Component, pageProps }) => {

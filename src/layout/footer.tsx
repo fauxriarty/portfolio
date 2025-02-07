@@ -8,7 +8,7 @@ export const Footer = () => {
         <li>
           <GraphicLink
             src="/github.svg"
-            url="https://www.github.com/{yourUsername}"
+            url="https://www.github.com/fauxriarty"
             alt="github"
           />
         </li>

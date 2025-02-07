@@ -1,20 +1,35 @@
-import  React from 'react';
+import React from 'react';
 
-export const Image = (props: any) => {
-    return (
-      <img
-        src={props.baseUrl + "original.webp"}
-        srcSet={
-        props.baseUrl + "567w.webp 567w" + "," +
-        props.baseUrl + "768w.webp 768w" + "," +
-        props.baseUrl + "992w.webp 992w"
-        }
-        sizes="(max-width: 567px) 567w,
-        (max-width: 768px) 768w,
-        (max-width: 992px) 992w"
-        alt={props.alt}
-        loading={props.loading}
-        className={props.className}
+interface ImageProps {
+  src: string;
+  alt: string;
+  loading?: 'lazy' | 'eager';
+  className?: string;
+}
+
+export const Image: React.FC<ImageProps> = ({ 
+  src,
+  alt,
+  loading = 'lazy',
+  className
+}) => {
+  // Extract the path without extension
+  const basePath = src.replace(/\.[^/.]+$/, '');
+  
+  return (
+    <img
+      src={`${basePath}.webp`}
+      srcSet={`
+        ${basePath}-567w.webp 567w,
+        ${basePath}-768w.webp 768w,
+        ${basePath}-992w.webp 992w
+      `}
+      sizes="(max-width: 567px) 567w,
+             (max-width: 768px) 768w,
+             (max-width: 992px) 992w"
+      alt={alt}
+      loading={loading}
+      className={className}
     />
-    );
-  };
+  );
+};
