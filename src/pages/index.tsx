@@ -5,14 +5,14 @@ import "./index.scss";
 export const Home = () => {
   return (
     <section className="home">
-        <div>
+        <div className="image">
           <Image
             src="/avatar/profilepic.jpg" 
             className="circle" 
             alt="A picture of me." 
             loading="eager"
-            width={400}        
-            height={380}
+            width={250}        
+            height={420}
             priority
             sizes="(max-width: 768px) 90vw,
                    (max-width: 1200px) 50vw,
