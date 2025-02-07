@@ -4,3 +4,6 @@ export * from "./layout";
 // our pages. Any page from the /pages directory, 
 // renders as a component within the Layout component. 
 // e.g. The paragraph on the index.tsx page renders within a main tag.
+
+export * from "./footer";
+export * from "./header";

@@ -1,6 +1,12 @@
 import React from "react";
+import { Header, Footer } from "./index";
 
 export const Layout = ({ children }) => {
-    return <main>{children}</main>;
-  };
-  
+  return (
+    <>
+      <Header />
+      <main>{children}</main>
+      <Footer />
+    </>
+  );
+}; 
