@@ -29,12 +29,6 @@ section {
 }
 
 .content{
-    margin:55;
+    margin:56;
 }
 
-@media (min-width: 768px) {
-    .home {
-      grid-template-columns: auto 2fr;
-      gap: 2rem; // Increases spacing on larger screens
-    }
-  }

@@ -12,7 +12,7 @@ export const Home = () => {
             alt="A picture of me." 
             loading="eager"
             width={400}        
-            height={350}
+            height={380}
             priority
             sizes="(max-width: 768px) 90vw,
                    (max-width: 1200px) 50vw,
