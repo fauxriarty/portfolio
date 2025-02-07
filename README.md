@@ -1,4 +1,7 @@
+Used this blog for reference: [Credits](https://medium.com/@jlanssie/create-a-portfolio-with-next-js-a5eea83b6b02)
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
 
 ## Getting Started
 
