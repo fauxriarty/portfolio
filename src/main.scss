@@ -4,7 +4,7 @@ $header-and-footer-height: 3rem;
 $header-and-footer-padding: 0.5rem;
 $header-and-footer-margin: 0.5rem;
 $main-padding: 2rem;
-$one-px-in-rem: 0.0625rem; // 1px = 0.0625rem
+$one-px-in-rem: 0.0625rem;
 
 * {
   margin: 0;
@@ -138,6 +138,14 @@ footer {
   height: $header-and-footer-height;
   width: 100%; 
   z-index: 1000;
+
+  p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    margin-right: 1.5rem;
+  }
   
   ul {
     display: inherit;
