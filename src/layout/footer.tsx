@@ -22,9 +22,9 @@ export const Footer = () => {
         </li>
         <li>
           <GraphicLink
-            src="/twitter.svg"
-            url="https://x.com/illum1nadi"
-            alt="Twitter"
+            src="/medium.svg"
+            url="https://medium.com/@illum1nadi"
+            alt="Medium"
           />
         </li>
         <li>

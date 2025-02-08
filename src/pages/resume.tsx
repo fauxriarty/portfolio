@@ -10,7 +10,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 };
 
 // This component never actually renders, because we redirect above.
-//  next requires a adefault export.
+//  next requires a default export.
 export default function ResumeRedirect() {
   return null;
 }
