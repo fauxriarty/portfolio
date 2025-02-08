@@ -1,7 +1,15 @@
 import { GraphicLink } from "../components/atoms";
+import { useRouter } from 'next/router';
 import React from "react";
 
 export const Footer = () => {
+  const router = useRouter();
+  
+  // hide footer on projects and wall pages
+  if (router.pathname === '/projects' || router.pathname === '/wall') {
+    return null;
+  }
+
   return (
     <footer>
       <p>my socials:</p>
