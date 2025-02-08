@@ -1,4 +1,5 @@
 section {
+    margin-top: 10rem;
     flex-grow: 1;
     flex-direction: row-reverse;
 
@@ -20,10 +21,12 @@ section {
 }
 
 .content {
-    margin: 6rem;
+    margin: 2rem;
     @media (max-width: 480px) {
       margin: 2rem; 
     }
+    text-transform: lowercase;
+    font-size: 1.125rem;
   }
 
 
@@ -37,7 +40,7 @@ section {
     }
     
     .circle {
-      aspect-ratio: 0.72; // maintains 1.8:1 height/width ratio
+      aspect-ratio: 0.84; 
       object-fit: cover;
       width: 100%;
       height: auto;

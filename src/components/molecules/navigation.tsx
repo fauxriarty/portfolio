@@ -6,13 +6,13 @@ export const Navigation = () => {
     <nav>
       <ul>
         <li>
-          <Link href="/">About</Link>
+          <Link href="/">about</Link>
         </li>
         <li>
-          <Link href="/projects">Projects</Link>
+          <Link href="/projects">projects</Link>
         </li>
         <li>
-          <Link href="/resume">Resume</Link>
+          <Link href="/resume">resume</Link>
         </li>
       </ul>
     </nav>

@@ -7,15 +7,11 @@ export const Home = () => {
     <section className="home">
         
       <div className='content'>
-        <h1>Hey. This is Aditya.</h1>
+        <h1>hey. it's aditya.</h1>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-          veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-          commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-          velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-          occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-          mollit anim id est laborum.
+        I like fixing things—whether it’s code, workflows, or broken strategies. 
+        From building apps to scaling engagement, I focus on what actually works, cutting through inefficiencies
+        and making things run smoother. If it’s complex, messy, and worth solving, I’m interested.
         </p>
       </div>
       <div className="image">

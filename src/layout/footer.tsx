@@ -4,7 +4,7 @@ import React from "react";
 export const Footer = () => {
   return (
     <footer>
-      <p>Socials:</p>
+      <p>my socials:</p>
       <ul>
         <li >
           <GraphicLink
