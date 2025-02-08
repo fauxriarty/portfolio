@@ -11,6 +11,10 @@ export const Navigation = () => {
         <li>
           <Link href="/projects">projects</Link>
         </li>
+        
+        <li>
+          <Link href="/wall">wall</Link>
+        </li>
         <li>
           <Link href="/resume">resume</Link>
         </li>
