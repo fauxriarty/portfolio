@@ -12,15 +12,15 @@ export const Home = () => {
             alt="A picture of me." 
             loading="eager"
             width={250}        
-            height={420}
+            height={420}       
             priority
-            sizes="(max-width: 768px) 90vw,
-                   (max-width: 1200px) 50vw,
-                   50vw"        
+            sizes="(max-width: 480px) 250px,
+                   (max-width: 768px) 275px,
+                   250px"      
           />
         </div>
       <div className='content'>
-        <h1>Hello.</h1>
+        <h1>Hey.</h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
           tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim

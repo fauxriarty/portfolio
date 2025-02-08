@@ -19,11 +19,28 @@ section {
     }
 }
 
-.content{
-    margin:64;
-}
+.content {
+    margin: 4rem;
+    @media (max-width: 480px) {
+      margin: 2rem; 
+    }
+  }
+
 
 .image {
-    width: 54%;
-    border-radius: 75%;
-}
+    max-width: 90%;
+    width: 300px;
+    margin: 0 auto;
+    
+    @media (max-width: 480px) {
+      max-width: 250px;
+    }
+    
+    .circle {
+      aspect-ratio: 0.555; // maintains 1.8:1 height/width ratio
+      object-fit: cover;
+      width: 90%;
+      height: auto;
+      border-radius: 50%;
+    }
+  }
