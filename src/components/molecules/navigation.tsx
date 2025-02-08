@@ -13,6 +13,9 @@ export const Navigation = () => {
         </li>
         
         <li>
+          <Link href="/work">experience</Link>
+        </li>
+        <li>
           <Link href="/wall">wall</Link>
         </li>
         <li>

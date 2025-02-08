@@ -199,13 +199,10 @@ footer {
 .sec-text{
   display: flex;
   flex-direction: column;
-  justify-content: center;
   justify-self: center;
-  justify-items: center;
   font-size: 1.5rem;
-  align-items: center;
   padding: 1rem;
   margin: auto;
-  max-width: calc(768px / 2);
-  width: 50%;
+  max-width: 48rem;
+  width: 100%;
 }

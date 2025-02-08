@@ -6,7 +6,7 @@ export const Footer = () => {
   const router = useRouter();
   
   // hide footer on projects and wall pages
-  if (router.pathname === '/projects' || router.pathname === '/wall') {
+  if (router.pathname === '/projects' || router.pathname === '/wall'|| router.pathname === '/work') {
     return null;
   }
 
