@@ -134,10 +134,9 @@ footer {
   justify-content: flex-end;
   margin-top: $header-and-footer-margin;
   margin-right: 2rem;
-  margin-bottom: 2rem;
   padding: $header-and-footer-padding;
   height: $header-and-footer-height;
-  width: auto; 
+  width: 100%; 
   z-index: 1000;
   
   ul {
