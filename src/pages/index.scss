@@ -21,12 +21,14 @@ section {
 }
 
 .content {
+    justify-content: center;
     margin: 2rem;
     @media (max-width: 480px) {
       margin: 2rem; 
     }
     text-transform: lowercase;
   }
+
 
 
 .image {
