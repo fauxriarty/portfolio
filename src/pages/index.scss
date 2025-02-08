@@ -28,7 +28,7 @@ section {
 
 
 .image {
-    max-width: 90%;
+    max-width: 100%;
     width: 300px;
     margin: 0 auto;
     
@@ -37,9 +37,9 @@ section {
     }
     
     .circle {
-      aspect-ratio: 0.555; // maintains 1.8:1 height/width ratio
+      aspect-ratio: 0.72; // maintains 1.8:1 height/width ratio
       object-fit: cover;
-      width: 90%;
+      width: 100%;
       height: auto;
       border-radius: 50%;
     }

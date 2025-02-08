@@ -5,22 +5,9 @@ import "./index.scss";
 export const Home = () => {
   return (
     <section className="home">
-        <div className="image">
-          <Image
-            src="/avatar/profilepic.jpg" 
-            className="circle" 
-            alt="A picture of me." 
-            loading="eager"
-            width={250}        
-            height={420}       
-            priority
-            sizes="(max-width: 480px) 250px,
-                   (max-width: 768px) 275px,
-                   250px"      
-          />
-        </div>
+        
       <div className='content'>
-        <h1>Hey.</h1>
+        <h1>Hey. This is Aditya.</h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
           tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
@@ -31,6 +18,20 @@ export const Home = () => {
           mollit anim id est laborum.
         </p>
       </div>
+      <div className="image">
+          <Image
+            src="/avatar/profilepic.jpg" 
+            className="circle" 
+            alt="A picture of me." 
+            loading="eager"
+            width={300}        
+            height={420}       
+            priority
+            sizes="(max-width: 480px) 280px,
+                   (max-width: 768px) 300px,
+                   250px"      
+          />
+        </div>
     </section>
   );
 };

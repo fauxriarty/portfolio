@@ -1,11 +1,10 @@
-
-
 $background-color: #000;
 $color: #fff;
 $header-and-footer-height: 3rem;
 $header-and-footer-padding: 0.5rem;
 $header-and-footer-margin: 0.5rem;
 $main-padding: 2rem;
+$one-px-in-rem: 0.0625rem; // 1px = 0.0625rem
 
 * {
   margin: 0;
@@ -27,7 +26,7 @@ header {
   margin-bottom: $header-and-footer-margin;
   padding: $header-and-footer-padding;
   height: $header-and-footer-height;
-  width: calc(100% - 2 * #{$header-and-footer-padding});
+  width: calc(100% - #{$header-and-footer-padding * 2});
 
   nav {
     height: 100%;
@@ -69,11 +68,11 @@ main {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  margin: 0 auto calc(#{$header-and-footer-height} + #{$header-and-footer-padding} + #{$header-and-footer-margin} + 1px);
+  margin: 0 auto calc(#{$header-and-footer-height + $header-and-footer-padding + $header-and-footer-margin + $one-px-in-rem});
   padding: $main-padding;
   min-height: calc(
-    100vh - 2 * #{$header-and-footer-height} - 2 * #{$header-and-footer-padding} - 2 * #{$header-and-footer-margin} -
-      2 * #{$main-padding}
+    100vh - #{$header-and-footer-height * 2} - #{$header-and-footer-padding * 2} - #{$header-and-footer-margin * 2} -
+      #{$main-padding * 2}
   );
   width: 100%;
   max-width: calc(100vw - 2 * 1.5rem);
@@ -128,19 +127,22 @@ main {
 footer {
   position: fixed;
   bottom: 0;
+  right: 0;
   background-color: $background-color;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   margin-top: $header-and-footer-margin;
+  margin-right: 2rem;
+  margin-bottom: 2rem;
   padding: $header-and-footer-padding;
   height: $header-and-footer-height;
-  width: calc(100% - 2 * #{$header-and-footer-padding});
-
+  width: auto; 
+  z-index: 1000;
+  
   ul {
     display: inherit;
     gap: 1rem;
-
     li {
       display: inherit;
       flex-grow: inherit;
