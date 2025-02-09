@@ -21,6 +21,10 @@
     &:hover {
         transform: translateY(-10px);
         box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3); 
+        background-color: #fff;
+        backdrop-filter: blur(2px);
+
+        color: #000;
     }
 
     &:nth-child(odd) {

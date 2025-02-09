@@ -13,7 +13,7 @@ export const Navigation = () => {
         </li>
         
         <li>
-          <Link href="/work">experience</Link>
+          <Link href="/work">exp</Link>
         </li>
         <li>
           <Link href="/wall">wall</Link>
