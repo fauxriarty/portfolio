@@ -15,6 +15,7 @@ $glass-radius: 0px;
   margin: 0;
   border: 0;
   padding: 0;
+  font-family: monospace;
   text-transform: lowercase;
 }
 
@@ -22,8 +23,8 @@ body {
   background: url("../public/starry-grunge.jpg");
   background-size: contain;
   color: $color;
-  font-family: sans-serif;
-  font-size: 1rem;
+  font-family: monospace;
+  font-size: 1.25rem;
   overflow-x: hidden;
 }
 
@@ -115,7 +116,7 @@ main {
   }
 
   p {
-    font-family: serif;
+    font-family: monospace;
     padding: 1em 0 0.5em;
   }
 
@@ -160,6 +161,7 @@ footer {
   border-radius: $glass-radius;
   display: flex;
   flex-direction: row;
+  font-family:monospace;
   box-shadow: $glass-shadow;
 
   justify-content: flex-end;
