@@ -111,7 +111,7 @@ export default function Wall() {
         setShowSwipeArrow(true);
         const timer = setTimeout(() => {
           setShowSwipeArrow(false);
-        }, 3000);
+        }, 2500);
         return () => clearTimeout(timer);
       }
     }
