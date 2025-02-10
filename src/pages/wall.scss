@@ -116,13 +116,18 @@
   }
 }
 
-/* Phones: horizontal scroll if needed */
+/* phones: */
 @media (max-width: 768px) {
   .messages-grid {
+    overflow: auto;
+    touch-action: pan-x pan-y;
+
     max-width: 100%;
     margin: 0 auto;
     min-height: calc(100vh - 5rem);
-    overflow-x: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+
     padding-top: 7rem; /* a bit bigger so no overlap on small screens */
   }
 
@@ -160,7 +165,25 @@
 }
 
 .loading-sign {
-  animation: blink 1s infinite alternate;
+  animation: blink 0.5s infinite alternate;
+}
+
+
+
+@media (max-width: 768px) {
+  .swipe-arrow {
+    display:flex;
+    align-items: right;
+    justify-content: right;
+    position: fixed;
+    bottom: 50%;
+    right: 20%;
+    transform: translate(50%, 50%);
+    font-size: 6rem;
+    color: #fff;
+    animation: blink 0.5s infinite alternate;
+    z-index: 100; 
+  }
 }
 
 @keyframes blink {

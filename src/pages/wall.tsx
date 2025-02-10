@@ -1,4 +1,3 @@
-"use client";
 import React, { useState, useEffect, useRef } from "react";
 import "./wall.scss";
 
@@ -72,7 +71,7 @@ export default function Wall() {
   const [hasPosted, setHasPosted] = useState(false);
   const [statusMsg, setStatusMsg] = useState("");
   const [isLoading, setIsLoading] = useState(true); 
-
+  const [showSwipeArrow, setShowSwipeArrow] = useState(false);
 
   const [name, setName] = useState("");
   const [text, setText] = useState("");
@@ -109,6 +108,11 @@ export default function Wall() {
         console.error("Failed to load messages:", err);
       } finally {
         setIsLoading(false); 
+        setShowSwipeArrow(true);
+        const timer = setTimeout(() => {
+          setShowSwipeArrow(false);
+        }, 3000);
+        return () => clearTimeout(timer);
       }
     }
     load();
@@ -134,6 +138,23 @@ export default function Wall() {
     }
     setLastAddedId(null);
   }, [lastAddedId, messages]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowSwipeArrow(false);
+    };
+
+    const grid = containerRef.current;
+    if (grid) {
+      grid.addEventListener("scroll", handleScroll);
+    }
+
+    return () => {
+      if (grid) {
+        grid.removeEventListener("scroll", handleScroll);
+      }
+    };
+  }, []);
 
   async function handlePost() {
     if (!name.trim() || !text.trim()) return;
@@ -191,58 +212,61 @@ export default function Wall() {
 
   return (
     <div className="wall-container">
-      {isLoading && (
+      {isLoading ? (
         <div className="loading-sign">Loading...</div>
-      )}
-      <div
-        className="messages-grid"
-        ref={containerRef}
-        style={{ height: containerHeight }}
-      >
-        {messages.map(msg => (
-          <div
-            key={msg.id}
-            className="message-card"
-            style={{ top: msg.position.top, left: msg.position.left }}
-          >
-            <span className="message-name">{msg.name}</span>
-            <div className="message-text">{msg.text}</div>
-          </div>
-        ))}
-      </div>
-
-      {/* if IP hasn't posted => show form, else show the 'thank you' message */}
-      {!hasPosted ? (
-        <div className="message-box">
-          <input
-            type="text"
-            placeholder="Your Name"
-            value={name}
-            onChange={e => setName(e.target.value)}
-          />
-          <textarea
-            placeholder="Leave a message..."
-            value={text}
-            onChange={e => setText(e.target.value)}
-          />
-          <button onClick={handlePost}>Post</button>
-        </div>
       ) : (
-        <div
-          style={{
-            fontFamily: "monospace",
-            color: "#fff",
-            position: "fixed",
-            bottom: 20,
-            right: 20,
-            background: "rgba(0,0,0,0.35)",
-            padding: "0.6rem",
-            borderRadius: 10,
-            boxShadow: "0 4px 10px rgba(0,0,0,0.3)"
-          }}
-        >
-          {statusMsg || "thank you for your message!"}
-        </div>
+        <>
+          <div
+            className="messages-grid"
+            ref={containerRef}
+            style={{ height: containerHeight }}
+          >
+            {messages.map(msg => (
+              <div
+                key={msg.id}
+                className="message-card"
+                style={{ top: msg.position.top, left: msg.position.left }}
+              >
+                <span className="message-name">{msg.name}</span>
+                <div className="message-text">{msg.text}</div>
+              </div>
+            ))}
+          </div> {/* Blinking swipe arrow for mobile devices */}
+          {showSwipeArrow && <div className="swipe-arrow">→</div>}
+
+          {/* if IP hasn't posted => show form, else show the 'thank you' message */}
+          {!hasPosted ? (
+            <div className="message-box">
+              <input
+                type="text"
+                placeholder="Your Name"
+                value={name}
+                onChange={e => setName(e.target.value)}
+              />
+              <textarea
+                placeholder="Leave a message..."
+                value={text}
+                onChange={e => setText(e.target.value)}
+              />
+              <button onClick={handlePost}>Post</button>
+            </div>
+          ) : (
+            <div
+              style={{
+                fontFamily: "monospace",
+                color: "#fff",
+                position: "fixed",
+                bottom: 20,
+                right: 20,
+                background: "rgba(0,0,0,0.35)",
+                padding: "0.6rem",
+                borderRadius: 10,
+                boxShadow: "0 4px 10px rgba(0,0,0,0.3)"
+              }}
+            >{statusMsg || "thank you for your message!"}
+            </div>
+          )}
+        </>
       )}
     </div>
   );
