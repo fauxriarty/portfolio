@@ -2,27 +2,37 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  padding: 0;
+  margin: 0;
   align-items: center;
   padding-top: 5rem;
   width: 100%;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .messages-grid {
   position: relative;
-  height: calc(100vh - 5rem);
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: calc(100vh - 5rem);
   overflow-y: auto;
-  scrollbar-width: none; 
+  overflow-x: hidden;
+  scrollbar-width: none;
   -ms-overflow-style: none;
-  
   &::-webkit-scrollbar {
-    display: none; 
+    display: none;
   }
-
-  width: 150%;
+  /* Extra top padding so cards start well below header */
+  padding-top: 6rem;
 }
 
 .message-card {
-  position: absolute; 
+  position: absolute;
   backdrop-filter: blur(4px);
   background: rgba(202, 190, 190, 0.1);
   border-radius: 10px;
@@ -43,9 +53,9 @@
 
   &:hover {
     width: 200px;
-    background-color: #fff;
-    color: black;
     height: 130px;
+    background-color: #fff;
+    color: #000;
   }
 
   .message-name {
@@ -106,7 +116,16 @@
   }
 }
 
+/* Phones: horizontal scroll if needed */
 @media (max-width: 768px) {
+  .messages-grid {
+    max-width: 100%;
+    margin: 0 auto;
+    min-height: calc(100vh - 5rem);
+    overflow-x: auto;
+    padding-top: 7rem; /* a bit bigger so no overlap on small screens */
+  }
+
   .message-card {
     width: 130px;
     height: 85px;
@@ -118,8 +137,37 @@
   }
 
   .message-box {
-    width: 180px;
-    bottom: 10px;
-    right: 10px;
+    width: 240px;
+    input,
+    textarea {
+      font-size: 1rem;
+      padding: 8px;
+    }
+  }
+}
+
+.loading-sign {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  min-height: 80vh; 
+  width: 100%;
+  font-family: monospace;
+  font-size: 1.5rem;
+  color: #fff;
+  background: none;
+}
+
+.loading-sign {
+  animation: blink 1s infinite alternate;
+}
+
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.4;
   }
 }
