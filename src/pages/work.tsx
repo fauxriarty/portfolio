@@ -5,11 +5,12 @@ const experiences = [
   { 
     id: 1, 
     title: 'Vellore Institute of Technology, Vellore', 
-    description: `Bachelor of Technology in Computer Science (Expected grad: May 2026)\n\ncGPA: 9.1/10`
+    description: `Bachelor of Technology in Computer Science with a spl. in data science.
+    (Expected grad: May 2026)\n\ncGPA: 9.03/10`
   },
   { 
     id: 2, 
-    title: 'Google Developer Student Clubs - Marketing Lead', 
+    title: 'Google Developer Student Clubs vit- Marketing Lead', 
     description: `• Led the Content and Digital Marketing team, nearly doubling social media followers and exponentially increasing engagement.
     \n\n• Secured sponsorships and managed logistics and finances for multiple hackathons with 1000+ registrations.`
   },
