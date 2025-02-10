@@ -10,7 +10,7 @@ const experiences = [
   },
   { 
     id: 2, 
-    title: 'Google Developer Student Clubs vit- Marketing Lead', 
+    title: 'Google Developer Student Clubs vit - Marketing Lead', 
     description: `• Led the Content and Digital Marketing team, nearly doubling social media followers and exponentially increasing engagement.
     \n\n• Secured sponsorships and managed logistics and finances for multiple hackathons with 1000+ registrations.`
   },
