@@ -11,11 +11,11 @@ type Message = {
 
 const CARD_WIDTH = 160;
 const CARD_HEIGHT = 100;
-const PAGE_SIZE = 10;
-const OVERLAP_THRESHOLD = 0;
-const MARGIN = 12;
+const PAGE_SIZE = 8 ; // messages per page
+const OVERLAP_THRESHOLD = 0; 
+const MARGIN = 16; // margin around each card
 const TRY_LIMIT = 300;
-const BASE_PAGE_HEIGHT = 600;
+const BASE_PAGE_HEIGHT = 450;
 
 function getRect(top: number, left: number) {
   return {

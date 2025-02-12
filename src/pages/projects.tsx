@@ -5,7 +5,7 @@ const projects = [
   {
     id: 1,
     name: 'this',
-    description: `This very portfolio website haha. my favourite part of it is the wall page, where visitors can post messages that appear randomly on the screen.  Built with Next.js, TypeScript, postgres and Sass (the script language not the noun).`,
+    description: `This very website haha. my favourite part of it is the wall page, where visitors can post messages that appear randomly on the screen.  Built with Next.js, TypeScript, postgres and Sass (the script language not the noun).`,
     githubUrl: 'https://github.com/fauxriarty/portfolio' 
   },
   {
