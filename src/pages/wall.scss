@@ -28,6 +28,8 @@
     display: none;
   }
 
+  padding-bottom: 12rem;
+
   padding-top: 6rem;
 }
 
@@ -131,6 +133,8 @@
     -webkit-overflow-scrolling: touch;
 
     padding-top: 7rem; /* a bit bigger so no overlap on small screens */
+    padding-bottom: 12rem;
+
   }
 
   .message-card {
@@ -174,17 +178,25 @@
 
 @media (max-width: 768px) {
   .swipe-arrow {
-    display:flex;
-    align-items: right;
-    justify-content: right;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: fixed;
-    bottom: 50%;
-    right: 20%;
-    transform: translate(50%, 50%);
+    bottom: 50%;  
+    right: 50px;
     font-size: 4rem;
     color: #fff;
-    animation: blink 0.5s infinite alternate;
-    z-index: 100; 
+    animation: swipe 0.5s infinite alternate;
+    z-index: 100;
+  }
+
+  @keyframes swipe {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(20px);
+    }
   }
 }
 
