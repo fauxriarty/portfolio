@@ -24,9 +24,9 @@ export const Home = () => {
         <div className='content'>
         <h1>hey. it's aditya.</h1>
         <p className='desc'>
-        I like fixing things—whether it’s code, workflows, or broken strategies. 
+        I like fixing things—whether it’s code, broken strategies or my perpetually tangled mess of cables.
         From building apps to scaling engagement, I focus on what actually works, cutting through inefficiencies
-        and making things run smoother. If it’s complex, messy, and worth solving, I’m interested.
+        and making things run smoother. If it’s complex, messy, and worth solving, I’m down.
         </p>
       </div>
     </section>
