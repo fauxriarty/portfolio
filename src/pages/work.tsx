@@ -12,8 +12,9 @@ const experiences = [
     id: 2, 
     title: 'Google Developer Student Clubs vit - Marketing Lead', 
     description: `• Led the Content and Digital Marketing team, nearly doubling social media followers and exponentially increasing engagement.
-    \n\n• Secured sponsorships and managed logistics and finances for multiple hackathons with 1000+ registrations.`
-  },
+    \n\n• Secured sponsorships and managed logistics and finances for multiple hackathons with 1000+ registrations.
+    \n\n• Published multiple technical blog posts on Medium, translating complex topics (like big data, deepfakes) into easily digestible narratives. `
+  } , 
   { 
     id: 3, 
     title: 'Full Stack Developer Intern - Drishtee Foundation', 

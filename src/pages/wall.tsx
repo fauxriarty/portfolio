@@ -11,66 +11,50 @@ type Message = {
 
 const CARD_WIDTH = 160;
 const CARD_HEIGHT = 100;
-const PAGE_SIZE = 8 ; // messages per page
-const OVERLAP_THRESHOLD = 0; 
+const PAGE_SIZE = 8; // messages per page
+const TRY_LIMIT = 500;
+const BASE_PAGE_HEIGHT = 600;
 const MARGIN = 16; // margin around each card
-const TRY_LIMIT = 300;
-const BASE_PAGE_HEIGHT = 450;
+const GAP_THRESHOLD = 250; // new card must differ by at least 300 pixels in either top or left
 
-function getRect(top: number, left: number) {
-  return {
-    x: left,
-    y: top,
-    width: CARD_WIDTH,
-    height: CARD_HEIGHT,
-    top,
-    bottom: top + CARD_HEIGHT,
-    left,
-    right: left + CARD_WIDTH
-  } as DOMRect;
-}
-
-function overlapArea(a: DOMRect, b: DOMRect) {
-  const xOverlap = Math.max(0, Math.min(a.right, b.right) - Math.max(a.left, b.left));
-  const yOverlap = Math.max(0, Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top));
-  return xOverlap * yOverlap;
-}
-
-function overlapsTooMuch(a: DOMRect, b: DOMRect, threshold: number) {
-  const area = overlapArea(a, b);
-  return area > threshold * (CARD_WIDTH * CARD_HEIGHT);
-}
 
 function generateRandomPosition(
   pageIndex: number,
-  existingPositions: { top: number; left: number }[],
-  containerWidth: number
+  existingPositions: { top: number; left: number }[]
 ) {
   const pageTop = pageIndex * BASE_PAGE_HEIGHT;
   let attempts = TRY_LIMIT;
-  const w = CARD_WIDTH + MARGIN;
-  const h = CARD_HEIGHT + MARGIN;
+  const minLeft = 33; // strictly > 32
+  const maxLeft = 549; // strictly < 550
+  const minTop = pageTop + MARGIN;
+  const maxTop = pageTop + BASE_PAGE_HEIGHT - CARD_HEIGHT - MARGIN;
 
   while (attempts > 0) {
-    const left = Math.random() * (containerWidth - w - 2 * MARGIN) + MARGIN;
-    const top = Math.random() * (BASE_PAGE_HEIGHT - h - 2 * MARGIN) + (pageTop + MARGIN);
+    // Generate integer values for left and top.
+    const left = Math.floor(Math.random() * (maxLeft - minLeft + 1)) + minLeft;
+    const top = Math.floor(Math.random() * (maxTop - minTop + 1)) + minTop;
 
-    const newRect = getRect(top, left);
+    // For each existing card on the same page, check that at least one coordinate
+    // differs by at least GAP_THRESHOLD. If both differences are less than GAP_THRESHOLD,
+    // the candidate is too close.
     const collision = existingPositions.some(pos => {
-      const existingRect = getRect(pos.top, pos.left);
-      return overlapsTooMuch(newRect, existingRect, OVERLAP_THRESHOLD);
+      return (Math.abs(top - pos.top) < GAP_THRESHOLD && Math.abs(left - pos.left) < GAP_THRESHOLD);
     });
-    if (!collision) return { top, left };
+
+    if (!collision) {
+      return { top, left };
+    }
     attempts--;
   }
-  return { top: pageTop + MARGIN, left: MARGIN };
+  // fallbakc position if no valid candidate is found within TRY_LIMIT attempts.
+  return { top: minTop, left: minLeft };
 }
 
 export default function Wall() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [hasPosted, setHasPosted] = useState(false);
   const [statusMsg, setStatusMsg] = useState("");
-  const [isLoading, setIsLoading] = useState(true); 
+  const [isLoading, setIsLoading] = useState(true);
   const [showSwipeArrow, setShowSwipeArrow] = useState(false);
 
   const [name, setName] = useState("");
@@ -79,10 +63,9 @@ export default function Wall() {
 
   const containerRef = useRef<HTMLDivElement>(null);
 
-  //  load messages + check if IP posted
   useEffect(() => {
     async function load() {
-      setIsLoading(true); 
+      setIsLoading(true);
       try {
         const res = await fetch("/api/messages", { cache: "no-store" });
         if (!res.ok) {
@@ -107,7 +90,7 @@ export default function Wall() {
       } catch (err) {
         console.error("Failed to load messages:", err);
       } finally {
-        setIsLoading(false); 
+        setIsLoading(false);
         setShowSwipeArrow(true);
         const timer = setTimeout(() => {
           setShowSwipeArrow(false);
@@ -118,7 +101,6 @@ export default function Wall() {
     load();
   }, []);
 
-  // todo: scroll newly added message into view
   useEffect(() => {
     if (lastAddedId === null) return;
     const msg = messages.find(m => m.id === lastAddedId);
@@ -161,12 +143,12 @@ export default function Wall() {
     if (!containerRef.current) return;
 
     const pageIndex = Math.floor(messages.length / PAGE_SIZE);
-    const containerWidth = containerRef.current.offsetWidth;
+    // filter to only consider positions on the same page.
     const samePagePositions = messages
       .filter(m => m.pageIndex === pageIndex)
       .map(m => m.position);
 
-    const newPos = generateRandomPosition(pageIndex, samePagePositions, containerWidth);
+    const newPos = generateRandomPosition(pageIndex, samePagePositions);
     const newMsg = { name, text, pageIndex, position: newPos };
 
     try {
@@ -177,7 +159,6 @@ export default function Wall() {
       });
       if (!res.ok) {
         if (res.status === 429) {
-          // if ip already posted show  "thank you" 
           console.warn("IP already posted, returning");
           setHasPosted(true);
           setStatusMsg("thank you for your message!");
@@ -231,10 +212,9 @@ export default function Wall() {
                 <div className="message-text">{msg.text}</div>
               </div>
             ))}
-          </div> {/* Blinking swipe arrow for mobile devices */}
+          </div>
           {showSwipeArrow && <div className="swipe-arrow">→</div>}
 
-          {/* if IP hasn't posted => show form, else show the 'thank you' message */}
           {!hasPosted ? (
             <div className="message-box">
               <input
@@ -263,7 +243,8 @@ export default function Wall() {
                 borderRadius: 10,
                 boxShadow: "0 4px 10px rgba(0,0,0,0.3)"
               }}
-            >{statusMsg || "thank you for your message!"}
+            >
+              {statusMsg || "thank you for your message!"}
             </div>
           )}
         </>
