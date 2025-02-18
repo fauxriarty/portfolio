@@ -15,7 +15,7 @@ const PAGE_SIZE = 8; // messages per page
 const TRY_LIMIT = 500;
 const BASE_PAGE_HEIGHT = 600;
 const MARGIN = 16; // margin around each card
-const GAP_THRESHOLD = 250; // new card must differ by at least 300 pixels in either top or left
+const GAP_THRESHOLD = 175; // new card must differ by at least 200 pixels in either top or left
 
 
 function generateRandomPosition(
