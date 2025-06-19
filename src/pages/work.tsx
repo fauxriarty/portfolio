@@ -12,11 +12,8 @@ CGPA: 9.03/10`
   },
   { 
     id: 2,
-    title: 'Software Development Intern - Kotak Cherry (Kotak Bank)',
-    description: `Kotak Cherry May 2025 – Jul 2025
-Software Development Intern
-Mumbai, India
-• Authored and maintained test scripts for the Kotak Cherry investment app using Sinon and Mocha libraries in JavaScript, ensuring module reliability and correctness.
+    title: 'Software Development Intern - Kotak Cherry',
+    description: `• Authored and maintained test scripts for the Kotak Cherry investment app using Sinon and Mocha libraries in JavaScript, ensuring module reliability and correctness.
 
 • Managed test pipelines and artefacts on Azure DevOps, improving end-to-end coverage visibility and stability.`
   },
