@@ -8,7 +8,7 @@ const experiences = [
     description: `Bachelor of Technology in Computer Science with a spl. in data science.
 (Expected grad: May 2026)
 
-CGPA: 9.03/10`
+CGPA: 9.04/10`
   },
   { 
     id: 2,
